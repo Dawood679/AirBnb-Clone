@@ -1,0 +1,73 @@
+<% layout('./layouts/boilerplate') -%>
+<body style="font-family: Arial, sans-serif;  background-color: #f9f9f9;">
+    <h1 style="text-align: center; color: #333; padding-top: 2rem;">Add New Listing</h1>
+    <form action="/listings/<%= listing._id %>?_method=patch" class="needs-validation"  method="post" style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" enctype="multipart/form-data">
+        <div style="margin-bottom: 15px;" novalidate>
+            <label for="title" class="form-label" style="display: block; font-size: 1rem; color: #333; margin-bottom: 5px;">Title</label>
+            <input type="text" class="form-control" name="listings[title]" value="<%= listing.title %>" id="title" style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;" required>
+            <div class="invalid-feedback" style="margin-top: 0.5rem; color: #dc3545;">
+                The Title is required
+              </div>
+        </div>
+        <h6>Original image</h6>
+        <div style="display: flex;">
+          
+          <img src="<%= originalimg %>" alt="">
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="price" class="form-label" style="display: block; font-size: 1rem; color: #333; margin-bottom: 5px;">URL</label>
+            <input type="file" class="form-control" name="listings[image]"  id="price" style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;" >
+            
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="price" class="form-label" style="display: block; font-size: 1rem; color: #333; margin-bottom: 5px;">Price</label>
+            <input type="text" class="form-control" name="listings[price]" value="<%= listing.price %>" id="price" style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;" required>
+            <div class="invalid-feedback" style="margin-top: 0.5rem; color: #dc3545;">
+                The Price is required
+              </div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="location" class="form-label" style="display: block; font-size: 1rem; color: #333; margin-bottom: 5px;">Location</label>
+            <input type="text" class="form-control" name="listings[location]" value="<%= listing.location %>" id="location" style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;" required>
+            <div class="invalid-feedback" style="margin-top: 0.5rem; color: #dc3545;">
+                The Location is required
+              </div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="country" class="form-label" style="display: block; font-size: 1rem; color: #333; margin-bottom: 5px;">Country</label>
+            <input type="text" class="form-control" name="listings[country]" value="<%= listing.country %>" id="country" style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;" required>
+            <div class="invalid-feedback" style="margin-top: 0.5rem; color: #dc3545;">
+                The country is required
+              </div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="description" class="form-label" style="display: block; font-size: 1rem; color: #333; margin-bottom: 5px;">Description</label>
+            <textarea name="listings[description]" class="form-control" id="description" style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; height: 150px;" required><%= listing.description %></textarea>
+            <div class="invalid-feedback" style="margin-top: 0.5rem; color: #dc3545;">
+                The description is required
+              </div>
+        </div>
+        <div style="text-align: center;">
+            <button style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 1rem;">Edit</button>
+        </div>
+    </form>
+    <script>
+        (() => {
+          'use strict'
+    
+          const forms = document.querySelectorAll('.needs-validation')
+    
+          Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+    
+              form.classList.add('was-validated')
+            }, false)
+          })
+        })()
+      </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<% layout('./layouts/boilerplate') -%>
+
+<body style="background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; ">
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 2fr)); gap: 2rem; padding-top: 3rem; padding-bottom: 2rem;">
+    <% for(let listing of listings){ %>
+      
+      <a href="/listings/<%= listing._id %>" style="text-decoration: none;">
+        <div style="text-decoration: none; color: inherit;">
+          <div class="card" style="width: 100%; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="..." style="height: 400px; object-fit: cover;">
+            <div class="card-body" style="padding: 1rem;">
+              <p class="card-text" style="font-size: 1.25rem; font-weight: 600; margin: 0;"><%= listing.title %></p>
+              <p class="card-text" style="font-size: 1rem; color: #fca311; font-weight: bold; margin-top: 0.5rem;">$<%= listing.price %></p>
+            </div>
+          </div>
+        </div>
+      </a>
+      
+    <% } %>
+  </div>
+
+</body>
+</html>
